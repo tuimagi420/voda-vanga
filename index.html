@@ -1,0 +1,1242 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html>
+<head>
+  <META NAME="ROBOTS" CONTENT="INDEX,NOFOLLOW,NOCACHE,NOIMAGEINDEX,NOARCHIVE">
+  <link rel="shortcut icon" href="/portal/app/images/customportlets/sage/images/favicon.ico" />
+
+  <title>Open Banking - Check the status of your bank feed</title>
+
+  <!--START CSS-->
+<!--html standard-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--link rel="icon" href="https://ux-repo.sage.com/favicon.ico"-->
+<!--link rel="shortcut icon" type="image/png" href="https://ux-repo.sage.com/favicon-32x32.png"-->
+<link rel="icon" href="https://sage.rightanswers.com/portal/app/customportlets/sage/images/favicon.ico">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+<link rel="stylesheet" href="/portal/app/css/social-ss-styles.css?ver=2024R2">
+
+<link rel="stylesheet" href="https://fonts.sage.com/sage.css">
+<link rel="stylesheet" href="https://ux-repo.sage.com/sage-dls-custom-2022.css">
+<!-- link rel="stylesheet" href="https://ux-repo.sage.com/stylesheets/sage-dls-custom-2022-ra.css" -->
+<!-- use the local style sheet include below, and comment out the one above, when asked to do design work -->
+<link rel="stylesheet" href="/portal/app/customportlets/sage-cdn/sage-dls-custom-2022-ra.css">
+
+
+<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" --><!-- /script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.20.1/autocomplete.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/classnames/2.2.5/index.min.js"></script>
+<script type="text/javascript" src="/portal/app/javascript/main.js?ver=2024R2"></script>
+
+<script src="/portal/app/javascript/config-ss.jsp"></script>
+<script src="/portal/app/javascript/social-ss/labels.jsp?v=21"></script>
+<script src="/portal/app/javascript/social-ss/app.js?ver=2024R2"></script>
+<script src="/portal/app/javascript/social-ss/bundle.min.js?ver=2024R2?v=22"></script>
+
+<!-- Tealium  -->
+<script type="text/javascript" src="https://tags.tiqcdn.com/utag/sage/knowledgebase/prod/utag.sync.js"></script>
+
+<script>
+  (function() {
+    var host = window.location.hostname;
+
+var langMap = {
+  "gb-kb":     "en-GB",
+  "fr-kb":     "fr-FR",
+  "de-kb":     "de-DE",
+  "es-kb":     "es-ES",
+  "pt-kb":     "pt-PT",
+  "za-kb":     "en-ZA",
+  "ke-kb":     "en-KE",
+  "ie-kb":     "en-IE",
+  "africa-kb": "en-ZA",
+  "asia-kb":   "en-GB",
+  "au-kb":     "en-AU",
+  "ng-kb":     "en-NG"
+};
+
+    for (var key in langMap) {
+      if (host.indexOf(key) !== -1) {
+        document.documentElement.lang = langMap[key];
+        break;
+      }
+    }
+  })();
+</script>
+
+<script type="text/javascript">
+    var utag_data = {
+    }
+  </script>
+
+  <!-- Tealium Universal Tag -->
+  <script type="text/javascript">
+      (function (a, b, c, d) {
+        a = 'https://tags.tiqcdn.com/utag/sage/knowledgebase/prod/utag.js';
+        b = document; c = 'script'; d = b.createElement(c); d.src = a;
+        d.type = 'text/java' + c; d.async = true;
+        a = b.getElementsByTagName(c)[0]; a.parentNode.insertBefore(d, a)
+      })();
+  </script>
+
+<script>
+$(function() {
+    var actionList = $(".actions-list");
+    var bodyHeight = $("body").height();
+    $(window).scroll(function() {
+        if (bodyHeight <= $(window).height() + $(window).scrollTop() + 30) {
+          actionList.hide();
+        } else {
+          actionList.fadeIn();
+        }
+    });
+});
+</script>
+
+<!-- Bot Proof of concept -->
+<script src="https://webchathub.sage.com/genesys/build-v2.0.5/WebMessenger.es5.js"></script>
+
+<style type="text/css">
+
+.hero {
+	background-image: url('https://ux-repo.sage.com/assets/kb/hero.png');
+min-height: 490px;
+}
+.hero--home {
+	background-image: url('https://ux-repo.sage.com/assets/kb/hero.png');
+min-height: 490px;
+}
+#other-links-aside {
+	background: #fff url('/portal/app/customportlets/sage-ui/illustration-quick-links@2x.png') no-repeat 100% 101%;
+	background-size: 75%;
+	padding-bottom: 220px;
+}
+
+div :nth-child(3 of h4.filter__title) { color: green; }
+
+.faq-question {
+  font-size: 22px;
+}
+
+.faq-collapse {
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+}
+
+.faq-collapse > .glyphicon {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#search-highlight {
+  text-decoration: none;
+}
+
+#search-highlight-input {
+  vertical-align: top;
+}
+#kbResults .filter:nth-of-type(6){
+display:none;
+}
+.view-link__hit-summary {
+Display : none;
+}
+
+.view-link__hit-summary{
+   display: none;
+}
+.solution-list .view-link__icon{
+      position: unset;
+}
+div#favoriteFilter > nav.text-center{
+             text-align: left;
+}
+.listing-fv .aside__ctrls {
+   position: unset !important; 
+   bottom: 0px; 
+  left: 0px; 
+}
+
+blockquote:before {
+margin-top: 0px !IMPORTANT;
+}
+
+.filter__item .ra-check__label {
+  word-break: break-word;
+}
+</style>
+
+<!-- START: ACCESSIBILITY CHANGES TO BE MIGRATED TO SAGE CDN -->
+<style>
+
+/* Accessibility Changes */
+
+.ra-message-card {
+    display: flex;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: fit-content;
+    min-height: 58px;
+    margin: 10px 0;
+}
+ 
+.ra-message-card-icon {
+    background-color: #00821f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+}
+ 
+.ra-message-card-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke-width: 2;
+    display: block;
+}
+ 
+.ra-message-card-icon img {
+    width: 24px;
+    height: 24px;
+}
+ 
+.ra-message-card-content {
+    flex: 1;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+ 
+.ra-message-card-heading {
+   font-weight: bolder !important;
+   margin: 0 0 4px 0 !important;
+   font-size: 16px !important;
+}
+ 
+.ra-message-card-description {
+    margin: 0;
+    font-size: 16px; 
+    line-height: 1.4;
+}
+
+span.ra-content-note-1, span.ra-content-note {
+     color: #00821f !important;
+}
+span.ra-content-tip-1 , span.ra-content-tip {
+     color: #0060a7 !important;
+}
+span.ra-content-caution-1 , span.ra-content-caution {
+     color: #cd384b !important;
+}
+span.ra-content-updated-1 , span.ra-content-updated {
+     color: #d64309 !important;
+}
+
+button:focus,
+a:focus,
+input:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px #1b1b1b, 0 0 0 4px #FFB500 !important;
+}
+main a {
+   text-decoration: underline !important;
+}
+
+.aside-seemore a {
+ text-decoration: none !important;
+}
+
+a.shortcut-panel__link,
+a.actions-list__link {
+   text-decoration: none !important;
+}
+/* CRI2 FIX START */
+.view-link__sub-line{ 
+    display: flex;
+    li {
+       margin-left: 10px;
+   }
+}
+
+.star-rating{
+    margin-top: 18px;
+}
+/* CRI2 FIX END */
+
+/* SEER8 FIX */
+.solution-list .preview-pane {
+   color: #6B6B6B;
+}
+/* SEER8 FIX END */
+
+/* SER 1 FIX */
+.skip-link {
+    display: none;
+    justify-content: center;
+    width: 100%;
+    height: 1px;
+    min-height: 0;
+    font-size: 15px;
+    line-height: 1.4;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.9);    
+    text-decoration: none;
+    background-color: #ffb500 !important;
+    padding: 0;
+    border-radius: 0;
+    border-width: 0;
+    z-index: 102;
+    transition: all 0.4s ease-out;
+    margin-top: -1px;
+    align-items: center;
+}
+ 
+.skip-link.visible {
+    height: 40px;
+    display: flex;
+    position: absolute;
+}
+/* SER 1 FIX END */
+
+@media (max-width: 767px) {
+    .filter-col .filter-toggle {
+        right: 0px;
+    }
+}
+
+.ra-check__label {
+   margin-bottom: 0px;
+   font-weight: 400;
+}
+
+.ra-check__box {
+   margin: 0
+}
+
+.filter__item .ra-check__box {
+    border: 1px solid  #C2C2C2;
+    appearance: none;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    width: 14px; 
+    height: 14px;
+    margin: 0;
+}
+
+.filter__item .ra-check__box:checked {
+    background-color: white;
+}
+
+.shortcut-panel__link:focus,
+.shortcut-panel__link:active {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.shortcut-panel__item:has(> .shortcut-panel__link:focus), 
+.shortcut-panel__item:has(> .shortcut-panel__link:active) {
+    box-shadow: 0 0 0 2px #1b1b1b, 0 0 0 4px #FFB500 !important;
+}
+
+.shortcut-panel__item > div > .shortcut-panel__link:focus,
+.shortcut-panel__item > div > .shortcut-panel__link:active {
+    box-shadow: 0 0 0 2px #1b1b1b, 0 0 0 4px #FFB500 !important;
+    border: 1px solid transparent !important;
+}
+
+.shortcut-panel__item:has(> div > .shortcut-panel__link:focus),
+.shortcut-panel__item:has(> div > .shortcut-panel__link:active) {
+    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+#btnShowMoreProducts:focus{
+  box-shadow: 0 0 0 2px #1b1b1b, 0 0 0 4px #FFB500 !important;
+  border: none;
+}
+
+.actions-list__link span:nth-child(2) {
+   margin-left: 10px;
+}
+.page-solution .actions-list__link {
+   display: flex;
+   width: 100%;
+   border-radius: 0;
+}
+
+@media (min-width: 1200px) {
+    .page-solution .actions-list__link {
+       padding: 16px 8px;
+    }
+}
+
+.search-criteria {
+    display: none !important;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+#header-language-icon:focus{
+    border: 1px solid;
+}
+.page-solution .solution-content a {
+     color: #007E45;
+}
+.page-solution .solution-content a:hover {
+     color: #006738;
+}
+.shortcut-panel__column .shortcut-panel__title {
+    text-decoration: underline !important;
+}
+.filter__item .ra-check__label {
+    text-decoration: underline !important;
+}
+
+.header .main-search-header .main-search__input-header:not(button) {
+	border-radius: 4px;
+}
+
+.header .main-search-header button {
+	display: none;
+}
+
+#announcementSection {
+display: none;
+}
+
+.table a {
+text-decoration: underline;
+}
+</style>
+
+<!-- END: ACCESSIBILITY CHANGES TO BE MIGRATED TO SAGE CDN -->
+
+<!--END CSS--><script type="text/javascript" src="/portal/app/javascript/jquery.highlight.js?ver=2024R2.0.0"></script>
+  <script type="text/javascript" src="/portal/app/javascript/copy-to-clipboard.js?ver=2024R2.0.0"></script>
+  <link type="text/css" rel="stylesheet" href="/portal/app/css/solution-style.css?ver=2024R2.0.0" />
+  <link type="text/css" rel="stylesheet" href="/portal/app/css/prism.css?ver=2024R2.0.0" />
+</head>
+<body class="page-solution">   
+	<a href="#solutionTop" class="sr-only">Skip to content</a>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <script>
+	
+			var isSimplifiedSocialLayout = false;
+			var simplifiedSocialLayoutParam = "";
+		
+			var launchLinksInNewWindow = false;
+			var launchLinksInNewWindowParam = "";
+		
+			var isEpaSearch = false;
+		
+
+	$(function() {
+		if (isSimplifiedSocialLayout || launchLinksInNewWindow) {
+			$('a[href*="view2.jsp?k2dockey="]').each(function(i, link) {
+				if (isSimplifiedSocialLayout) {
+					$(link).attr("href", $(link).attr("href") + simplifiedSocialLayoutParam);
+				}
+
+				if (launchLinksInNewWindow) {
+					$(link).attr("href", $(link).attr("href") + launchLinksInNewWindowParam);
+				}
+			});
+		}
+		$(function() {
+			if (window.self != window.top) {
+				$(document.body).addClass("in-iframe");
+			}
+		});
+	});
+</script><script>
+    if (!location.pathname.endsWith("viewsolution.jsp") && !location.pathname.endsWith("viewdocument.jsp")) {
+        document.title = 'Sage KB - United Kingdom - Guest';
+    }
+</script>
+
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="header__main-wrap">
+
+                    <div class="header__left">
+                        <a href="/portal/ss/" class="header__logo-link">
+                            <img src="/portal/app/images/custom/19_UK - Guest_20200210183032.png" alt="logo" class="" />
+                            <span class="logo_title">Knowledgebase</span>
+                        </a>
+	
+			<div class="header-menu btn-group pull-right">
+                            <div class="main-search-header">
+                                <form role="search" class="main-search__form" method="get">
+                                    <input type="text"
+                                        name="querytext"
+                                        class="main-search__input-header"
+                                        placeholder="Search for answers"
+                                        maxlength="200"
+                                        autocomplete="off"
+                                        autocorrect="off"
+                                        spellcheck="false"
+                                        autocapitalize="none"
+                                        value="">
+                                    <input type="hidden" name="tabid" value="2">
+                                    <input type="hidden" id="searchaliases" name="searchaliases" value="">
+                                    <button type="submit" class="main-search__button-header" tabindex="-1">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                        <span class="main-search__button-label">Search</span>
+                                    </button>
+                                </form>
+                            </div>
+				
+                            <script>
+                                $(function() {
+                                    RA.SearchBarHeader.init();
+                                    
+                                });
+                            </script>
+ 				
+                            <a id="header-help-icon" href="#" class="pull-right" onclick="RaHelp.launchHelp('Sage Software', 'ss');">
+                                <span class="ra-icon-systemhelp"></span>
+                            </a>
+                            <a href="#" id="header-language-icon" class="dropdown-toggle region" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  tabindex="-1">
+                                <span class="group-info"><img id="group-flag" src="https://ux-repo.sage.com/flags/icon-flag-GB.svg"><span class="region-label">United Kingdom</span>&nbsp;</a>
+
+                            </div>
+                    </div>
+
+                    <div class="header__right">
+                        <div class="header__login-wrap">
+                                <a href="/portal/ss/logout.jsp?redir=.%2f%3fguest%3d0" id="guestLoginLink" class="login-btn -alt sageLogin">Sign In</a>
+                                <a href="/portal/ss/logout.jsp?redir=.%2f%3fguest%3d0" id="guestSignupLink" class="login-btn -alt sageLogin">Sign Up</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<script>
+$(function() {
+    $("#addKnowledgeList a").on("click", function(e) {
+        var $this = $(e.currentTarget);
+        logAction("SUBMITTEDTOSM", $this.data("desc"));
+    });
+    RA.Header.init();
+});
+function addToKb(solutionType) {
+    addToKbForm.solutionType.value = solutionType;
+    addToKbForm.submit();
+    return false;
+}
+</script><div class="container">
+		   <!-- jsp:include page="/app/portlets/search/social-ss/search-form.jsp"/ -->
+	   </div>
+	<main>
+  <div class="sbox" id="solutionTop">
+    <div class="layout_1-col--fixed">
+		<div class="">
+			<div class="" id="view-btr-link">
+					<button href="#" onclick="window.history.go(-1); return false;" style="z-index: 100000;">Back</button>
+				</div>
+			<div class="solution-head">
+	          <h1 class="solution-head__title">
+				Open Banking - Check the status of your bank feed</h1>
+
+		<div class="solution-head__info">
+			              Created on&nbsp;<time datetime="2021-04-14 08:07:16">14 April 2021</time>&nbsp;|&nbsp;Last modified on&nbsp;<time datetime="2026-06-30 10:16:44">30 June 2026</time>
+
+		                        </div>
+				<div class="">
+           <ul class="actions-list">
+              <li class="actions-list__item">
+                <button href="#" id="ss-download-pdf" class="actions-list__link -pdf" data-log="DOWNLOADPDF" title="PDF" aria-label="PDF" style="cursor: pointer;">
+                  <span class="glyphicon glyphicon-save-file actions-list__icon"></span>
+                  <span>PDF</span>
+				        </button>
+              </li>
+
+              <li class="actions-list__item">
+                <a href="/portal/app/portlets/results/viewsolution.jsp?solutionid=210414080717033&view=print" title="Print" aria-label="Print" target="_blank" class="actions-list__link -print" data-log="PRINTED">
+                  <span class="glyphicon glyphicon-print actions-list__icon"></span>
+                  <span>Print</span>
+                </a>
+              </li>
+
+              <li class="actions-list__item">
+					<button href="#" id="copyToClipboardLink" class="actions-list__link -copy" data-log="COPYTOCLIPBOARD" title="Copy To Clipboard" aria-label="Copy To Clipboard">
+						<span class="glyphicon glyphicon-copy actions-list__icon"></span>
+            <span>Copy To Clipboard</span>
+          </button>
+				</li>
+            </ul>
+          </div>
+	        </div>
+        </div>
+
+
+        <div class="">
+
+        <article id="solutionContent" class="solution-content">
+		<h2 class="fieldHeader">Summary</h2>
+			<div>Check whether your bank have a direct feed.</div>
+		<h2 class="solution-content__field-head">Description</h2>
+					<div><p>Open Banking (PSD2) is a new secure way for you to share financial information from your bank with companies like Sage that offer banking and payment apps and is designed to give you greater control over your financial data.</p> <p>These changes come into effect on 5 March 2020 and to comply with the new standards, connections between some banks and Sage will change.</p> <p>Most bank feeds that don't already use Open Banking will be updated in the coming weeks after 5 March 2020.</p> <p>There are a small number of banks and financial institutions that won’t have Open Banking connections ready in time for the change.</p> <p>Use the table below for up-to-date information about the status of your bank feeds.</p> <p>We have two types of bank feeds, Direct and Indirect.</p> <ul> <li>Direct bank feeds are where we have an agreement with your bank or financial institution</li> <li>For other banks we connect using a secure third party provider, approved by the Financial Conduct Authority (FCA)</li> </ul> <p><em>The information provided in this table is accurate to the best of Sage's knowledge at 14 May 2020.</em></p></div>
+                <h2 class="solution-content__field-head">Resolution</h2>
+					<div><table class="table" border="0"> <thead> <tr> <th>Financial institution</th> <th>Feed type</th> <th>When is this happening?</th> <th>What do I need to do?</th> </tr> </thead> <tbody id="table-content"> <tr> <td><strong>Adam &amp; Company (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Aldermore Business Bank (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Aldermore Savings (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Allied Irish Bank (Republic of Ireland)</strong></td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Allied Irish Business Bank (UK)</strong></td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Amazon Credit Card (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>American Express Cards (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>American Express Membership Rewards (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Ample Interactive Investor (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Aqua card (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>ASDA - Credit Cards (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Bank of Ireland (Republic of Ireland)</strong></td> <td>Indirect:<br><em>Personal accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Bank of Ireland (UK)</strong></td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business Online accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Bank of Scotland (UK)</strong></td> <td>Direct:<br><em>Business Current Accounts (GBP)</em></td> <td>Live</td> <td>No action required, you're good to go.</td> </tr> <tr> <td>&nbsp;</td> <td>Indirect:<br><em>Business accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Barclaycard (UK)</strong></td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Barclays (UK)</strong></td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em><br><em>Wealth Management accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td>&nbsp;</td> <td>Indirect:<br><em>Loans</em></td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>BM Savings (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Cahoot (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Cahoot is a subsidiary to Santander, please connect to Santander.</td> </tr> <tr> <td>&nbsp;</td> <td>Indirect:<br><em>Loans accounts</em></td> <td>Not part of PSD2 scope</td> <td>No action required, you're good to go.</td> </tr> <tr> <td><strong>Capital One (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>CashPlus (UK)</strong></td> <td>Direct:<br><em>Business Current Accounts (GBP)</em></td> <td>Live</td> <td>No action required, you're good to go.</td> </tr> <tr> <td>&nbsp;</td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Cater Allen Business Banking (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Cater Allen Personal Banking (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Charities Aid Foundation (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Chelsea Building Society (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Citibank (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Clydesdale Bank (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Clydesdale Business Online (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Coutts (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Coventry Building Society (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Creation.co.uk (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Cumberland Building Society (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Danske Bank (UK)</strong></td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>First Direct (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td>&nbsp;</td> <td>Indirect:<br><em>Loans</em></td> <td>Not part of PSD2 scope</td> <td>No action required, you're good to go.</td> </tr> <tr> <td><strong>First Trust Bank (UK)</strong></td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Halifax Online (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td>&nbsp;</td> <td>Indirect:<br><em>Mortgage accounts</em></td> <td>Not part of PSD2 scope</td> <td>No action required, you're good to go.</td> </tr> <tr> <td><strong>Handelsbanken (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Hargreaves Lansdown (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>HSBC Bank (UK)</strong></td> <td>Direct:<br><em>Business Current Accounts (GBP)</em><br><em>Savings Accounts (GBP)</em><br><em>Foreign Currency Accounts</em></td> <td>Live</td> <td>No action required, you're good to go.</td> </tr> <tr> <td>&nbsp;</td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td>&nbsp;</td> <td>Indirect:<br><em>Business (MiVision)</em></td> <td>Live</td> <td>No action required, you're good to go.</td> </tr> <tr> <td>&nbsp;</td> <td>Indirect:<br><em>Mortgage accounts</em></td> <td>Not part of PSD2 scope</td> <td>No action required, you're good to go.</td> </tr> <tr> <td><strong>ICICI Bank (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Intelligent Finance (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Investec - Private Banking (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>John Lewis (partnership) (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Kent Reliance Building Society (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Leeds Building Society (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Lloyds (UK)</strong></td> <td>Direct:<br><em>Business Current Accounts (GBP)</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td>&nbsp;</td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Marbles (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Marks and Spencer (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>MBNA (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>MBNA (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to new feed when available.</td> </tr> <tr> <td><strong>Metro Bank Business Corporate (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Metro Bank Retail (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Mint (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Monzo (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>This is a new feed so you can use it straight away.</td> </tr> <tr> <td><strong>My Argos Card (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>N26 (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>This is a new feed so you can use it straight away.</td> </tr> <tr> <td><strong>Nationwide Building Society (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>NatWest Bank (UK)</strong></td> <td>Direct:<br><em>Business Current Accounts (GBP)</em></td> <td>Live</td> <td>No action required, you're good to go.</td> </tr> <tr> <td>&nbsp;</td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Next Store Card (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Norwich and Peterborough Building Society (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>NS&amp;I (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Opus Card (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>PayPal (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Post Office (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Post Office Credit Card (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Revolut (UK)</strong></td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em></td> <td>Live</td> <td>This is a new feed so you can use it straight away.</td> </tr> <tr> <td><strong>Royal Bank of Scotland (UK)</strong></td> <td>Direct:<br><em>Business Current Accounts (GBP)</em></td> <td>Live</td> <td>No action required, you're good to go.</td> </tr> <tr> <td>&nbsp;</td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Saffron Building Society (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Sage Pay (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Sainsbury's Bank (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Santander (UK)</strong></td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em><br><em>Corporate accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Smile Digital Banking (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>St James's Place Bank (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Starling (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>This is a new feed so you can use it straight away.</td> </tr> <tr> <td><strong>Tesco Bank (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>The Co-operative Bank (new) (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td>&nbsp;</td> <td>Indirect:<br><em>Loans accounts</em></td> <td>Not part of PSD2 scope</td> <td>No action required, you're good to go.</td> </tr> <tr> <td><strong>The Co-operative Bank Business Banking (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>The One Account (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Think Money (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Tide (UK)</strong></td> <td>Direct</td> <td>Deprecated</td> <td>Disconnect and reconnect to Tide indirect.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/tide" target="_blank">Find out more</a></td> </tr> <tr> <td>&nbsp;</td> <td>Indirect</td> <td>Live</td> <td>This is a new feed so you can use it straight away.</td> </tr> <tr> <td><strong>TSB (UK)</strong></td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Ulster Bank (Republic of Ireland)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Ulster Bank (UK)</strong></td> <td>Indirect:<br><em>Personal accounts</em><br><em>Business accounts</em></td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Unity Trust Bank (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Vanquis Bank (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Virgin - Credit Cards (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Virgin Money (Northern Rock) (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Virgin Money (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to a new feed now.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/update-feed" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Yorkshire Bank (UK)</strong></td> <td>Indirect</td> <td>Estimated March 2020</td> <td>Update to new feed when available.</td> </tr> <tr> <td><strong>Yorkshire Bank Offshore Business (UK)</strong></td> <td>Indirect</td> <td>Unknown</td> <td>You will need to manually import statements from 5 March 2020.<span>&nbsp;</span><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more</a></td> </tr> <tr> <td><strong>Yorkshire Building Society (UK)</strong></td> <td>Indirect</td> <td>Live</td> <td>Update to new feed when available.</td> </tr> </tbody> </table> <h5>What if my bank isn't listed in this table?</h5> <p>If your bank isn't listed in the table, then your bank feed isn't PSD2 compliant. You'll need to need to manually import transactions from your bank statement from 5 March 2020.</p> <p><a rel="noopener" href="https://my.sage.co.uk/public/help.aspx#/customer/support/openbanking/category/manual-import" target="_blank">Find out more &gt;</a></p> <div class="ra-message-card ra-content-tip-1 mceNonEditable" style="border: 1px solid #0060a7;"> <div class="ra-message-card-icon" style="background-color: #0060a7;"><svg width="24" height="24" role="img"><path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a6 6 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707s.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a6 6 0 0 1 1.013.16l3.134-3.133a3 3 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></div> <div class="ra-message-card-content"> <h3 class="ra-message-card-heading">TIP:</h3> <p class="ra-message-card-description mceEditable">For Sage 200 users if you need assistance with a bank feed issue, please gather the information outlined in this <a rel="noopener" href="view2.jsp?k2dockey=200427112508290" target="_blank">article</a> before contacting our Technical Support team.</p> </div> </div></div>
+                </article>
+
+        <aside id="solutionFeedback" class="aside -full"></aside>
+        <aside id="solution-metadata" class=" aside-detail">
+	          	<div class="">
+		            <div class="solution-content__footer">
+		              <span>Keywords:&nbsp;</span>
+		              open banking bank</div>
+		        </div>
+		        <div class="">
+		            <div class="solution-content__footer">
+		              <span>Product:&nbsp;</span>
+		              Sage 200 Professional<br>
+Sage 200 Standard<br>
+</div>
+		        </div>
+
+	        	<div class="">
+		            <div class="solution-content__footer">
+		              <span>Solution ID:&nbsp;</span>
+		              <span>210414080717033</span>
+		            </div>
+		        </div>
+		        <div class="">
+	              </div>
+
+	        	<div class="">
+		            <div class="solution-content__footer">
+		              <span>Published on:&nbsp;</span>
+		              <time datetime="2021-04-14 08:07:16">14 April 2021</time>
+		            </div>
+		        </div>
+		        <div class="">
+			         <span>Applies to:&nbsp;</span>
+
+		           	 <span>Case category &gt; How do I... &gt; governmental/legislative compliance<br></span>
+		        </div>
+
+            <dl>
+              </dl>
+          </aside>
+        </div>
+    </div>
+  </div>
+</main>
+	<div class="modal fade" id="copyToClipboardModal" role="dialog" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" type="button" data-dismiss="modal">&times;</button>
+					<h3 id="deleteMemberModal-modal-title">Solution to Copy:</h3>
+				</div>
+				<div class="modal-body">
+					<textarea rows="10" name="copy-solution-area" id="copy-solution-area">
+					</textarea>
+					<a id="copyToClipboardButton" class="btn btn-primary pull-right" href="#" >
+						<span>Copy to Clipboard</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	 </div>
+
+	<div class="modal fade" id="downloadPDFFileModal" role="dialog" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true"><i class="icomoon-close_thin"></i></span></button>
+					<h3 id="-modal-title">Failed to download PDF file.</h3>
+				</div>
+				<div class="modal-body">
+					<div>Problem creating pdf file for the solution:&nbsp;210414080717033</div>
+					<a  class="btn btn-primary pull-right" href="#" data-dismiss="modal" aria-hidden="true">
+						<span>Close</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="acknowledged--success" role="dialog" data-backdrop="static">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><i class="icomoon-close_thin"></i></button>
+					<h3 id="-modal-title">Acknowledged.</h3>
+				</div>
+				<div class="modal-body">
+					<div>Thank you for acknowledging that you have read and understood this solution.</div>
+				</div>
+				<div class="modal-footer">
+					<button style="margin: 8px;" class="btn btn-tertiary-white" type="button" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="acknowledged--failure" role="dialog" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><i class="icomoon-close_thin"></i></button>
+				<h3 id="-modal-title">Failure.</h3>
+            </div>
+            <div class="modal-body">
+                <div id="error-div">Unable to acknowlege. An error occurred.</div>
+			</div>
+			<div class="modal-footer">
+				<button style="margin: 8px;" class="btn btn-tertiary-white" type="button" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+    </div>
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer footer--standard">
+    <div class="footer-wrapper">
+        <div class="layout_1-col">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 footer_logos">
+                        <div class="footer_logo"><a href="http://www.sage.com"><img src="https://ux-repo.sage.com/icons/2022/detailed-dark-logo-sage.svg" width="60" height="23" alt="Sage"></a></div>
+                        <ul class="footer_sns">
+                            <li><a href="https://www.facebook.com/SageUK/"><i class="sg-icon sg-icon--facebook" aria-label="facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/sageofficial/" target="_blank"><i class="sg-icon sg-icon--instagram" aria-label="instagram"></i></a></li>
+                            <li><a href="https://www.linkedin.com/company/sage-software/" target="_blank"><i class="sg-icon sg-icon--linkedin" aria-label="linkedin"></i></a></li>
+                            <li><a href="https://twitter.com/SageUK" target="_blank"><i class="sg-icon sg-icon--twitter" aria-label="twitter"></i></a></li>
+                            <li><a href="https://www.youtube.com/user/SageUKOfficial" target="_blank"><i class="sg-icon sg-icon--youtube" aria-label="youtube"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-12 col-md-8 footer_links">
+                        <div class="row footer_links-wrapper">
+                            <div class="col-xs-4 col-sm-3">
+                                <h6>SUPPORT &amp; TRAINING</h6>
+                                <ul>
+                                    <li><a href="https://www.sage.com/en-gb/support/">Support</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/blog/">Sage Advice Blog</a></li>
+                                    <li><a href="http://my.sage.co.uk/">My Sage</a></li>
+                                    <li><a href="http://www.sageu.com/uki/">Sage University</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/shop/traininglanding.aspx">Training</a></li>
+                                    <li><a href="https://communities.sage.co.uk/">Community</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/making-tax-digital/">Making Tax Digital</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-4 col-sm-3">
+                                <h6>PARTNERS</h6>
+                                <ul>
+                                    <li><a href="https://www.sage.com/en-gb/partners/independent-software-vendors/">Developers &amp; ISVs</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/partners/how-it-works/">Become a partner</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/partners/resellers/">Resellers</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/accountants/">Accountants</a></li>
+                                    <li><a href="https://www.sage.com/marketplace">Sage Marketplace</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-4 col-sm-3">
+                                <h6>COMPANY</h6>
+                                <ul>
+                                    <li><a href="https://www.sage.com/en-gb/company/">Overview</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/about-us/">About us</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/about-us/contact-us/">Contact us</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/social/">Social</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/company/careers/">Careers</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/news/">News</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/company/events/">Sage events</a></li>
+                                    <li><a href="https://www.sage.com/investors/">Investors</a></li>
+                                    <li><a href="https://www.sage.com/en-gb/company/sage-foundation/">Sage Foundation</a></li>
+                                </ul>
+                            </div>
+							<div class="col-xs-4 col-sm-3">
+                                <h6>FAQs</h6>
+								<ul>
+    <li><a href="/portal/controller/view/faq/?id=1">Search Tips</a></li>
+            <li><a href="/portal/controller/view/faq/">See all FAQs</a></li>
+</ul></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 footer_selector">
+                                <a role="button" data-toggle="modal" data-target="#selectorModal" href="#"><img src="https://ux-repo.sage.com/flags/icon-globe-light-blue.svg" alt="globe icon" width="24" height="24">&nbsp; UK&nbsp; |&nbsp; English&nbsp; <i class="sg-icon sg-icon--angle-down" aria-label="angledown"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="footer_nav">
+        <li class="footer_nav-item">
+            &copy; Sage Group plc <script>document.write(new Date().getFullYear())</script>.
+        </li>
+        <li class="footer_nav-item">
+            <a href="https://www.sage.com/en-gb/legal/">Legal</a>
+        </li>
+        <li class="footer_nav-item">
+            <a href="https://www.sage.com/en-gb/legal/privacy-and-cookies/">Privacy notice and cookies</a>
+        </li>
+        <li class="footer_nav-item">
+           <a href="https://www.sage.com/en-gb/gdpr/">General data protection regulations</a>
+        </li>
+        <li class="footer_nav-item" >
+            <a href="https://www.sage.com/investors/corporate-governance/anti-slavery-and-human-trafficking-statement/">Anti-slavery statement 2019</a>
+        </li>
+    </ul>
+</footer>
+
+<!-- language selector modal -->
+<div class="modal fade lang-selector" id="selectorModal" tabindex="-1" role="dialog" aria-labelledby="selectorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Choose your region & language</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body lang-selector_links">
+				<ul class="list-unstyled">
+	<li><a href="https://africa-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-CAF.svg" alt=""> Africa</a></li>
+	<li><a href="https://asia-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-ASEAN.svg" alt=""> Asia</a></li>
+	<li><a href="https://au-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-AU.svg" alt=""> Australia</a></li>
+	<li><a href="https://ca-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-CA.svg" alt=""> Canada</a></li>
+	<li><a href="https://fr-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-FR.svg" alt=""> France</a></li>
+	<li><a href="https://ie-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-IE.svg" alt=""> Ireland</a></li>
+	<li><a href="https://ke-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-KE.svg" alt=""> Kenya</a></li>
+	<li><a href="https://ng-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-NG.svg" alt=""> Nigeria</a></li>
+	<li><a href="https://pt-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-PT.svg" alt=""> Portugal</a></li>
+	<li><a href="https://za-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-ZA.svg" alt=""> South Africa</a></li>
+	<li><a href="https://es-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-ES.svg" alt=""> Spain</a></li>
+	<li><a href="https://ae-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-AE.svg" alt=""> United Arab Emirates</a></li>
+	<li><a href="https://gb-kb.sage.com/" class="active"><img src="https://ux-repo.sage.com/flags/icon-flag-GB.svg" alt=""> United Kingdom</a></li>
+	<li><a href="https://us-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-US.svg" alt=""> United States</a></li>
+	<li><a href="https://de-kb.sage.com/" ><img src="https://ux-repo.sage.com/flags/icon-flag-DE.svg" alt=""> Germany</a></li>
+	
+</ul></div>
+        </div>
+    </div>
+</div>						
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-bootstrap-scrolling-tabs@2.6.1/dist/jquery.scrolling-tabs.min.js"></script>
+
+<script>
+	$(function() {
+		try {
+			ResultTabCarousel.init();
+		} catch (e) {/*do nothing*/}
+	});
+</script>
+
+<form>
+	<input type="hidden" id="isasolutiowindow" name="isasolutiowindow" value="true">
+	<input type="hidden" id="forcedfeedback" name="forcedfeedback" value="false">
+</form>
+
+<form name="logform" id="logform">
+	<input type="hidden" name="action" id="action" value="VIEW">
+	<input type="hidden" name="accessmethod" id="accessmethod" value="">
+	<input type="hidden" name="description" id="description" value="Open Banking - Check the status of your bank feed">
+	<input type="hidden" name="docid" id="docid" value="210414080717033">
+	<input type="hidden" name="browsepath" id="browsepath" value="How do I...">
+	<input type="hidden" name="typeofview" id="typeofview" value="custom">
+	<input type="hidden" name="attributeset" id="attributeset" value="">
+	<input type="hidden" name="attributes" id="attributes" value="">
+	<input type="hidden" name="fulltaxonomy" id="fulltaxonomy" value="Case category//How do I...//governmental/legislative compliance">
+	<input type="hidden" name="from" id="from" value="">
+	<input type="hidden" name="page" id="page" value="">
+	<input type="hidden" name="position" id="position" value="">
+	<input type="hidden" id="SToken" name="SToken" value="8E12127D7BA018F69AAE0917D0033BC6"/>
+	<input type="hidden" id="portalcontext" name="portalcontext" value="/portal"/>
+	<input type="hidden" name="solutionCompanyCode" id="solutionCompanyCode" value="sage">
+	<input type="hidden" name="solutionAuthor" id="solutionAuthor" value="David.Price1@sage.com">
+</form>
+
+<form name="ticketform" id="ticketform" target="blank" method="POST" action="/portal">
+	<input type="hidden" name="action" id="action" value="VIEW">
+	<input type="hidden" name="description" id="description" value="Open Banking - Check the status of your bank feed">
+	<input type="hidden" name="searchstring" id="searchstring" value="">
+	<input type="hidden" name="result" id="result" value="">
+	<input type="hidden" name="docid" id="docid" value="210414080717033">
+	<input type="hidden" name="browsepath" id="browsepath" value="How do I...">
+	<input type="hidden" name="typeofview" id="typeofview" value="custom">
+	<input type="hidden" name="openclosedticket" id="openclosedticket" value="/portal">
+	<input type="hidden" name="do_openclosedticket" id="do_openclosedticket" value="false">
+	<input type="hidden" id="SToken" name="SToken" value="8E12127D7BA018F69AAE0917D0033BC6"/>
+</form>
+
+<form name="saretrievesolution" id="saretrievesolution" method="POST" action="/portal">
+	<input type="hidden" name="id" value="">
+	<input type="hidden" name="type" value="">
+	<input type="hidden" name="url" value="">
+	<input type="hidden" name="title" value="">
+	<input type="hidden" name="summary" value="">
+	<input type="hidden" name="hdlaunched" value="false">
+	<input type="hidden" name="SToken" value="8E12127D7BA018F69AAE0917D0033BC6"/>
+	<input type="hidden" name="ticketid" value=""/>
+</form>
+
+<form id="emailsolution" name="emailsolution" method="POST" target="_blank" action="/portal/app/portlets/emailclient/emailform.jsp">
+	<input type="hidden" id="solutionid" name="solutionid" value="210414080717033"/>
+	<input type="hidden" id="solutiontitle" name="solutiontitle" value="Open Banking - Check the status of your bank feed"/>
+	<input type="hidden" id="SToken" name="SToken" value="8E12127D7BA018F69AAE0917D0033BC6"/>
+</form>
+
+<form id="submittosm" name="submittosm" method="POST" target="_blank" action="https://internal-kb.sage.com/solutionmanager/controller/addtokb/">
+	<input type="hidden" id="username" name="username" value="gbguest"/>
+	<input type="hidden" id="fullname" name="fullname" value="gbguest"/>
+	<input type="hidden" id="author" name="author" value="gbguest"/>
+	<input type="hidden" id="emailaddress" name="emailaddress" value=""/>
+	<input type="hidden" id="phonenumber" name="phonenumber" value=""/>
+	<input type="hidden" id="request" name="request" value=""/>
+	<input type="hidden" id="solutiontitle" name="solutiontitle" value=""/>
+	<input type="hidden" id="alternatesymptom" name="alternatesymptom" value=""/>
+	<input type="hidden" id="companycode" name="companycode" value="sage"/>
+	<input type="hidden" id="companyCode" name="companyCode" value="sage"/>
+	<input type="hidden" id="keywords" name="keywords" value=""/>
+	<input type="hidden" id="fromrake" name="fromrake" value=""/>
+	<input type="hidden" id="formsubmitted" name="formsubmitted" value="true"/>
+	<input type="hidden" id="adddoc" name="adddoc" value="true"/>
+	<input type="hidden" id="solutionID" name="solutionID" value=""/>
+	<input type="hidden" id="details" name="details" value=""/>
+	<input type="hidden" id="title" name="title" value=""/>
+	<input type="hidden" id="error" name="error" value=""/>
+	<input type="hidden" id="cause" name="cause" value=""/>
+	<input type="hidden" id="solutionStatus" name="solutionStatus" value=""/>
+	<input type="hidden" id="taxonomy" name="taxonomy" value=""/>
+	<input type="hidden" id="longSolution" name="longSolution" value=""/>
+	<input type="hidden" id="symptoms" name="symptoms" value=""/>
+	<input type="hidden" id="templateField1" name="templateField1" value=""/>
+	<input type="hidden" id="templateField2" name="templateField2" value=""/>
+	<input type="hidden" id="templateField3" name="templateField3" value=""/>
+	<input type="hidden" id="templateField4" name="templateField4" value=""/>
+	<input type="hidden" id="templateField5" name="templateField5" value=""/>
+	<input type="hidden" id="templateField6" name="templateField6" value=""/>
+	<input type="hidden" id="templateField7" name="templateField7" value=""/>
+	<input type="hidden" id="templateField8" name="templateField8" value=""/>
+	<input type="hidden" id="templateField9" name="templateField9" value=""/>
+	<input type="hidden" id="templateField10" name="templateField10" value=""/>
+	<input type="hidden" id="templateField11" name="templateField11" value=""/>
+	<input type="hidden" id="solutionType" name="solutionType" value=""/>
+	<input type="hidden" id="SToken" name="SToken" value="8E12127D7BA018F69AAE0917D0033BC6"/>
+</form>
+
+<form id="submittokb" name="submittokb" method="GET" target="_blank" action="/portal/controller/smDirectAddToKb/createNew">
+	<input type="hidden" name="username" value="gbguest"/>
+	<input type="hidden" name="author" value="gbguest"/>
+	<input type="hidden" name="companyCode" value="sage"/>
+	<input type="hidden" name="keywords" value=""/>
+	<input type="hidden" name="adddoc" value="true"/>
+	<input type="hidden" name="request" value=""/>
+	<input type="hidden" name="shortSolution" value=""/>
+	<input type="hidden" name="solutionID" value=""/>
+</form>
+<script type="text/javascript" src="/portal/app/javascript/prism.js?ver=2024R2.0.0"></script>
+
+  <script>
+    $.extend(RA.ViewKB, {
+      solution: {
+        id: "210414080717033",
+        title: "Open Banking - Check the status of your bank feed",
+		collections: "custom_ie_en_twohundredcloud_professional_rasplit_custom_gb_en_twohundredcloud_professional_rasplit_custom_ie_en_twohundredcloud_standard_rasplit_custom_gb_en_twohundredcloud_standard",
+		collectionsDescription: "Sage 200 Professional \/ Extra IE english_rasplit_Sage 200 professional \/ Extra UK english_rasplit_Sage 200 standard \/ education IE english_rasplit_Sage 200 standard \/ education UK english"
+      },
+      stats: {
+        views: 8113,
+        solved: 3
+      },
+      user: {
+        isGuest: true,
+        profileImage: "",
+        emailAddress: "gbguest@sage.com"
+      },
+      survey: {
+        id: 6,
+		yesSurveyID: 0,
+        showSurveyOnNo: true,
+		showSurveyOnYes: true
+      },
+      config: {
+        showComments: false
+      }
+    });
+
+
+	var ClipboardValues = ClipboardValues || {};
+	ClipboardValues.solutionID = "210414080717033";
+	ClipboardValues.solutionProblem = "Open Banking - Check the status of your bank feed";
+	ClipboardValues.solutionSummary = "Check whether your bank have a direct feed.";
+
+	
+
+    $(function() {
+		RA.ViewKB.init();
+
+		
+			CopyToClipboard.init(ClipboardValues);
+			var searchHighlight = RA.SearchHighlight.init('a, about, above, across, after, afterwards, again, against, all, almost, alone, along, already, also, although, always, am, among, amongst, amoungst, amount, an, and, another, any, anyhow, anyone, anything, anyway, are, around, as, at, be, became, because, become, becomes, becoming, been, before, beforehand, behind, being, below, beside, besides, between, beyond, bill, both, bottom, but, by, call, can, cannot, cant, co, con, could, couldnt, cry, de, describe, detail, do, done, down, due, during, each, eg, eight, either, eleven, else, elsewhere, empty, enough, etc, even, ever, every, everyone, everything, everywhere, except, few, fifteen, fify, fill, find, fire, first, five, for, former, formerly, forty, found, four, from, front, full, further, get, give, go, had, has, hasnt, have, he, hence, her, here, hereafter, hereby, herein, hereupon, hers, herself, him, himself, his, how, however, hundred, i, ie, if, in, inc, indeed, interest, into, is, it, its, itself, keep, last, latter, latterly, least, less, ltd, made, many, may, me, meanwhile, might, mill, mine, more, moreover, most, mostly, move, much, must, my, myself, name, namely, neither, never, nevertheless, next, nine, no, nobody, none, noone, nor, not, nothing, now, nowhere, of, off, often, on, once, one, only, onto, or, other, others, otherwise, our, ours, ourselves, out, over, own, part, per, perhaps, please, put, rather, re, same, see, seem, seemed, seeming, seems, serious, several, she, should, show, side, since, sincere, six, sixty, so, some, somehow, someone, something, sometime, sometimes, somewhere, still, such, system, take, ten, than, that, the, their, them, themselves, then, thence, there, thereafter, thereby, therefore, therein, thereupon, these, they, thick, thin, third, this, those, though, three, through, throughout, thru, thus, to, together, too, top, toward, towards, twelve, twenty, two, un, under, until, up, upon, us, very, via, was, we, well, were, what, whatever, when, whence, whenever, where, whereafter, whereas, whereby, wherein, whereupon, wherever, whether, which, while, whither, who, whoever, whole, whom, whose, why, will, with, within, without, would, yet, you, your, yours, yourself, yourselves', '');
+			
+
+			$("#ss-download-pdf").click(function(){
+				$.ajax({
+					type: 'GET',
+					url: '/portal/controller/view/solution/pdf?solutionid=210414080717033',
+					headers: {
+						'Content-Type':'application/json'
+					},
+					success: function(res) {
+						if (res && res.isSuccessStatus === false){
+							$("#downloadPDFFileModal").modal("show");
+						} else {
+							window.location = '/portal/controller/view/solution/pdf?d=true';
+						}
+					}
+				});
+			});
+
+			$("#acknowledgeSolutionBtn").click(function(){
+				var solutionId = "210414080717033";
+				var data = {action: 'acknowledgeSolution', solutionId: solutionId, SToken: Config.csrf.value}
+
+				$.post(Config.contextPath + "/controller/view/solution/compliance", data)
+					.success( function(res) {
+						if (res && res.successMessage){
+							$("#acknowledgementNotification").hide();
+							$("#acknowledged--success").modal("show");
+						} else {
+							$("#acknowledged--failure").find("#error-div").html(res.errorMessage);
+							$("#acknowledged--failure").modal("show");
+						}
+					});
+			});
+
+			$("#resetSolution").click(function() {
+				$.ajax({
+					type: 'GET',
+					headers: {
+						'Content-Type':'application/json'
+					},
+					url: '/portal/controller/view/solution/reset?solutionid=' + 210414080717033,
+
+					success: function(res) {
+						window.location.reload();
+					}
+				});
+			});
+		
+    });
+
+
+  </script>
+
+	<script type="text/javascript">
+			var $expand = $("#ExpandButton");
+			var $collapse = $("#CollapseButton");
+			$(function() {
+				if($("div").hasClass("expand-collapse")){
+					$expand.removeClass("hide");
+					$("div[id^='ec-']").collapse({'toggle': false});
+				}
+			});
+
+			function expandCollapsebleSections() {
+				$('#solutionTop .collapse').collapse('show');
+				$expand.addClass("hide");
+				$collapse.removeClass("hide");
+			}
+
+			function collapseCollapsebleSections() {
+				$('#solutionTop .collapse').addClass('collapse');
+				$('#solutionTop .collapse').collapse('hide');
+				$collapse.addClass("hide");
+				$expand.removeClass("hide");
+			}
+		</script>
+	<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const skipLink = document.querySelector('.skip-link');
+    let tabPressCount = 0;
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+            tabPressCount++;
+
+            if (tabPressCount === 1) {
+                skipLink.classList.add('visible');
+            } else if (tabPressCount === 2) {
+                skipLink.classList.remove('visible');
+            }
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.matches('.skip-link')) {
+            skipLink.classList.remove('visible');
+        }
+    });
+
+    skipLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        const mainContent = document.querySelector('.sbox');
+        if (mainContent) {
+            mainContent.setAttribute('tabindex', '-1');
+            mainContent.focus();
+            skipLink.classList.remove('visible');
+        }
+    });
+  });
+/* SER 1 FIX END */
+</script>
+
+</body>
+</html>
